@@ -1,9 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h2 align="center">IE579 - Game Theory and 
-
-Multi-Agent Reinforcement Learning </h2>
+  <h2 align="center">IE579 - Game Theory and Multi-Agent Reinforcement Learning </h2>
   <p align="center">
     Final Project Repository for IE579
   </p>
