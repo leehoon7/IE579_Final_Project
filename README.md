@@ -16,23 +16,23 @@ Each agent (small blue or red box) can move or attack enemy and The objective of
 We will use simplified environment. There are 5 blue and 5 red in 15X15 size map.
 Description for state, observation for each agent, action and reward is as follows:
 
-**_State_** space is a 15X15 map with channels in the table. State space will (15, 15, 37). 
+- **_State_** space is a 15X15 map with channels in the table. State space will (15, 15, 37). 
 Note that your actor network for submission should not use state as an input. 
 Using state for training is totally fine. 
 For example, you can use state as an input to train critic network.
 
-**_Observation_** space is a 5x5 map with the channels in the table. Observation space will (5, 5, 41).
+- **_Observation_** space is a 5x5 map with the channels in the table. Observation space will (5, 5, 41).
 Your actor network for final submission should use observation as an input.
 
-**_Action_** space is discrete and 21 dimensions. 13 dimensions for moving and 8 dimensions 
+- **_Action_** space is discrete and 21 dimensions. 13 dimensions for moving and 8 dimensions 
 for attacking as shown in the below figure.
 
-**_Reward_** is summation of multiple reward components. Note that you are free to change the reward design by yourself.
-- +5 for killing an opponent.
-- -0.005 for every timestep.
-- -0.1 for attacking.
-- +0.2 for attacking an opponent (when attack is success).
-- -0.1 for dying.
+- **_Reward_** is summation of multiple reward components. Note that you are free to change the reward design by yourself.
+  - +5 for killing an opponent.
+  - -0.005 for every timestep.
+  - -0.1 for attacking.
+  - +0.2 for attacking an opponent (when attack is success).
+  - -0.1 for dying.
 
 ### 1.2. Rules and Evaluation
 To compare two models, we test 200 times with 100 different random seed and switching.
