@@ -11,7 +11,10 @@
 ### 1.1. Environment Description
 We will use **MAgent-Battle** for final project. 
 It is an environment for multi-agent reinforcement learning (MARL).
-Each agent (small blue or red box) can move or attack enemy and The objective of each team (blue or red) is to kill all opponents in the game
+Each agent (small blue or red box) can move or attack enemy and The objective of each team (blue or red) is to kill all opponents in the game.
+<div align="center">
+<img src="images/game_description.png" width="150">
+</div>
 
 We will use simplified environment. There are 5 blue and 5 red in 15X15 size map.
 Description for state, observation for each agent, action and reward is as follows:
@@ -25,12 +28,17 @@ For example, you can use state as an input to train critic network.
 There will be additional information (last action, reward, and relative position) in 34 dimensions.
 Finally, Observation space will (5, 5, 7) + 34 = 209 dim.
 Your actor network for final submission should use observation as an input.
+Please refer this [link](https://github.com/geek-ai/MAgent/blob/master/doc/get_started.md#observation) for details.
 <div align="center">
-<img src="images/observation.png" width="500">
+<img src="images/observation.png" width="450">
 </div>
 
 - **_Action_** space is discrete and 21 dimensions. 13 dimensions for moving and 8 dimensions 
 for attacking as shown in the below figure.
+<div align="center">
+<img src="images/action.png" width="450">
+</div>
+
 
 - **_Reward_** is a summation of multiple reward components. Note that you are free to change the reward design by yourself.
   - +5 for killing an opponent.
@@ -54,7 +62,7 @@ You don't need to submit the RL-based model; a rule-based model is also acceptab
 Because the game is competitive, we need a (good) opponent behavior model for training. 
 However, static or unskilled opponenet might lead to overfitting.
 To mitigate the issue, there are multiple approaches:
-- **Self-play**: Agents can enhance their performance by playing against themselves.
+- **Self-play**: Agents can enhance their performance by playing against themselves. ([link](https://huggingface.co/learn/deep-rl-course/unit7/self-play?fw=pt))
 - **Population-play**: Train a population of agents, with each agent playing against the others.
 
 
@@ -116,7 +124,13 @@ pip install tensorflow==1.13.1
 python examples/train_battle.py --train
 ```
 
-## 3. Project Tips
+## 3. Example Code
+(TBU before the end of Friday, November 10)
+- Standard environment code for project.
+- IPPO (Independent PPO) + Self-play implementation compatible with a provided environment.
+- Standard Evaluation code
+
+## 4. Project Tips
 - If you want to develop in Windows using Linux based server or WSL, use SSH or WSL interpreter.
   - If you use PyCharm ([WSL](https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html),
 [SSH](https://www.jetbrains.com/help/pycharm/configuring-remote-interpreters-via-ssh.html))
@@ -131,3 +145,4 @@ python examples/train_battle.py --train
 (TA) Kanghoon Lee - leehoon@kaist.ac.kr
 
 ## References
+1. _Zheng, Lianmin, et al. "Magent: A many-agent reinforcement learning platform for artificial collective intelligence." Proceedings of the AAAI conference on artificial intelligence. Vol. 32. No. 1. 2018._
