@@ -16,25 +16,30 @@ Each agent (small blue or red box) can move or attack enemy and The objective of
 We will use simplified environment. There are 5 blue and 5 red in 15X15 size map.
 Description for state, observation for each agent, action and reward is as follows:
 
-- **_State_** space is a 15X15 map with channels in the table. State space will (15, 15, 37). 
+- **_State_** space is a 15X15 map with 7 channels as shown in the below figure. State space will (15, 15, 7). 
 Note that your actor network for submission should not use state as an input. 
 Using state for training is totally fine. 
 For example, you can use state as an input to train critic network.
 
-- **_Observation_** space is a 5x5 map with the channels in the table. Observation space will (5, 5, 41).
+- **_Observation_** space is a 5x5 map with 7 channels as shown in below figure.
+There will be additional information (last action, reward, and relative position) in 34 dimensions.
+Finally, Observation space will (5, 5, 7) + 34 = 209 dim.
 Your actor network for final submission should use observation as an input.
+<div align="center">
+<img src="images/observation.png" width="500">
+</div>
 
 - **_Action_** space is discrete and 21 dimensions. 13 dimensions for moving and 8 dimensions 
 for attacking as shown in the below figure.
 
-- **_Reward_** is summation of multiple reward components. Note that you are free to change the reward design by yourself.
+- **_Reward_** is a summation of multiple reward components. Note that you are free to change the reward design by yourself.
   - +5 for killing an opponent.
   - -0.005 for every timestep.
   - -0.1 for attacking.
   - +0.2 for attacking an opponent (when attack is success).
   - -0.1 for dying.
 
-### 1.2. Rules and Evaluation
+### 1.2. Evaluation
 To compare two models, we test 200 times with 100 different random seed and switching.
 For example, if we test model A and B, test will be as follows:
 - (blue=A, red=B, seed=1), (blue=B, red=A, seed=1), (blue=A, red=B, seed=2), (blue=B, red=A, seed=2), …, (blue=B, red=A, seed=100)
