@@ -13,7 +13,7 @@ We will use **MAgent-Battle** for final project.
 It is an environment for multi-agent reinforcement learning (MARL).
 Each agent (small blue or red box) can move or attack enemy and The objective of each team (blue or red) is to kill all opponents in the game.
 <div align="center">
-<img src="images/game_description.png" width="150">
+  <img src="images/game_play.gif" width="250">
 </div>
 
 We will use simplified environment. There are 5 blue and 5 red in 15X15 size map.
