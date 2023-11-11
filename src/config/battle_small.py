@@ -17,7 +17,7 @@ def get_config(map_size):
          'view_range': gw.CircleRange(5), 'attack_range': gw.CircleRange(1.5),
          'damage': 2, 'step_recover': 0.1,
 
-         'step_reward': -0.005,  'kill_reward': 5, 'dead_penalty': -0.1, 'attack_penalty': -0.1,
+         'step_reward': -0.005,  'kill_reward': 5, 'dead_penalty': -0.1, 'attack_penalty': -0.0,
          })
 
     g0 = cfg.add_group(small)

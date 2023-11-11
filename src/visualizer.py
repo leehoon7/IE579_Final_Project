@@ -14,7 +14,7 @@ class CustomVisualizer():
         # If you want to make a video, make self.save_video = True
 
         self.map_size = map_size
-        self.save_video = True
+        self.save_video = False
         self.fnames = []
         self.current_episode = 0
         self.current_env_t = 0
@@ -26,6 +26,7 @@ class CustomVisualizer():
         self.num_agent = 5
 
         self.width_agent = 0.9
+        self.width_agent_hp = 0.3
         self.width_agent_shift = (1 - self.width_agent) / 2
         self.width_circle_shift = self.width_agent / 2
         self.color_blue = (72 / 255., 72 / 255., 170 / 255.)
@@ -115,16 +116,17 @@ class CustomVisualizer():
             self.patches_all.append(p)
 
             # Position
-            rect = patches.Rectangle((x + self.width_agent_shift + self.width_agent * 0.2, y + self.width_agent_shift),
-                                     self.width_agent * 0.8, self.width_agent, edgecolor=None, facecolor=self.color_red,
-                                     zorder=10)
+            rect = patches.Rectangle((x + self.width_agent_shift + self.width_agent * self.width_agent_hp,
+                                      y + self.width_agent_shift),
+                                     self.width_agent * (1 - self.width_agent_hp), self.width_agent,
+                                     edgecolor=None, facecolor=self.color_red, zorder=10)
             p = self.ax.add_patch(rect)
             self.patches_all.append(p)
 
             # HP of RED
             rect = patches.Rectangle((x + self.width_agent_shift, y + self.width_agent_shift),
-                                     self.width_agent * 0.2, self.width_agent * hp1[i], edgecolor=None, facecolor=self.color_red_hp,
-                                     zorder=10)
+                                     self.width_agent * self.width_agent_hp, self.width_agent * hp1[i],
+                                     edgecolor=None, facecolor=self.color_red_hp, zorder=10)
             p = self.ax.add_patch(rect)
             self.patches_all.append(p)
 
@@ -143,15 +145,16 @@ class CustomVisualizer():
             p = self.ax.add_patch(circle)
             self.patches_all.append(p)
 
-            rect = patches.Rectangle((x + self.width_agent_shift + self.width_agent * 0.2, y + self.width_agent_shift),
-                                     self.width_agent * 0.8, self.width_agent, edgecolor=None, facecolor=self.color_blue,
-                                     zorder=10)
+            rect = patches.Rectangle((x + self.width_agent_shift + self.width_agent * self.width_agent_hp,
+                                      y + self.width_agent_shift),
+                                     self.width_agent * (1 - self.width_agent_hp), self.width_agent,
+                                     edgecolor=None, facecolor=self.color_blue, zorder=10)
             p = self.ax.add_patch(rect)
             self.patches_all.append(p)
 
             rect = patches.Rectangle((x + self.width_agent_shift, y + self.width_agent_shift),
-                                     self.width_agent * 0.2, self.width_agent * hp2[i], edgecolor=None, facecolor=self.color_blue_hp,
-                                     zorder=10)
+                                     self.width_agent * self.width_agent_hp, self.width_agent * hp2[i],
+                                     edgecolor=None, facecolor=self.color_blue_hp, zorder=10)
             p = self.ax.add_patch(rect)
             self.patches_all.append(p)
 

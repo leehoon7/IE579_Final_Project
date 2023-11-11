@@ -8,8 +8,8 @@
 ## 1. About The Project
 ### 1.1. Project Notice
 **(Important !!)** We uploaded the standard environment for final project. 
-We aim to update the IPPO code at the earliest opportunity, ideally within one day (before the end of this Saturday).
-We apologize for any delay.
+~~We aim to update the IPPO code at the earliest opportunity, ideally within one day (before the end of this Saturday).
+We apologize for any delay.~~ We uploaded the RL training code.
 The update log will be posted in [here](#5-update-logs), and you can download the standard environment by following [these](#31-standard-environment-class-for-final-project) instructions.
 
 The due date for the project will be updated soon.
@@ -155,12 +155,19 @@ MAgent/  # Cloned repository
 │ │   └─── config/
 │ │     └─── battle_small.py  # provided code 1 (small battle config)
 │ ├── battle_env.py  # provided code 2 (standard environment)
-│ └── visualizer.py  # provided code 3 (custom visualizer)
+│ ├── visualizer.py  # provided code 3 (custom visualizer)
+│ └── battle_train.py  # provided code 4 (RL training code)
 └── ...
 ```
 Finally, try to run the `battle_env.py`.
-### 3.2. Independent PPO + Self-play
-- **(TBU)** IPPO (Independent PPO) + Self-play implementation compatible with a provided environment.
+### 3.2. Independent PPO
+We uploaded RL training code `battle_train.py` against random policy.
+You need PyTorch to train the PPO model. To install the PyTorch in Linux, run following command. 
+(This command only support cpu. You can install CUDA PyTorch using proper command.)  
+```bash
+pip3 install torch --index-url https://download.pytorch.org/whl/cpu
+```
+You can get RL agent which can beat random agent with a 99% winning ratio under **5 mins** using this code.
 
 ### 3.3. Evaluation code
 - **(TBU)** Standard Evaluation code
@@ -180,7 +187,7 @@ pip install matplotlib
 pip install imageio
 pip install imageio[ffmpeg]
 ```
-For the official visualization, please refer this [link](https://github.com/geek-ai/MAgent/blob/master/doc/get_started.md#watch-video)..
+For the official visualization, please refer this [link](https://github.com/geek-ai/MAgent/blob/master/doc/get_started.md#watch-video).
 
 ## 4. Project Tips
 - If you want to develop in Windows using Linux based server or WSL, use SSH or WSL interpreter.
@@ -196,7 +203,8 @@ For the official visualization, please refer this [link](https://github.com/geek
 I will document any significant updates to the repository here along with the dates.
 - **(Nov. 08. 2023)** Instruction has been provided.
 - **(Nov. 10. 2023)** A standard environment class with visualization is now available.
-- _**(Nov. 11. 2023)** IPPO with self-play training code will be updated_
+- **(Nov. 11. 2023)** IPPO training code is now available.
+- _**(Nov. 12. 2023)** Standard evaluation code and self-play will be updated._
 
 ## Contact
 **(TA)** Kanghoon Lee - leehoon@kaist.ac.kr
