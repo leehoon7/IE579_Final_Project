@@ -154,9 +154,10 @@ MAgent/  # Cloned repository
 │ │ └─── builtin/
 │ │   └─── config/
 │ │     └─── battle_small.py  # provided code 1 (small battle config)
-│ ├── battle_env.py  # provided code 2 (standard environment)
-│ ├── visualizer.py  # provided code 3 (custom visualizer)
-│ └── battle_train.py  # provided code 4 (RL training code)
+│ ├── agent/  # provided code 2 (RL & Rule-based Agent)
+│ ├── battle_env.py  # provided code 3 (standard environment)
+│ ├── visualizer.py  # provided code 4 (custom visualizer)
+│ └── battle_train.py  # provided code 5 (RL training code)
 └── ...
 ```
 Finally, try to run the `battle_env.py`.
