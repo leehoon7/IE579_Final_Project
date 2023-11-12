@@ -157,7 +157,8 @@ MAgent/  # Cloned repository
 │ ├── agent/  # provided code 2 (RL & Rule-based Agent)
 │ ├── battle_env.py  # provided code 3 (standard environment)
 │ ├── visualizer.py  # provided code 4 (custom visualizer)
-│ └── battle_train.py  # provided code 5 (RL training code)
+│ ├── battle_train.py  # provided code 5 (RL training code)
+│ └── battle_eval.py  # provided code 6 (evaluation code)
 └── ...
 ```
 Finally, try to run the `battle_env.py`.
@@ -205,7 +206,7 @@ I will document any significant updates to the repository here along with the da
 - **(Nov. 08. 2023)** Instruction has been provided.
 - **(Nov. 10. 2023)** A standard environment class with visualization is now available.
 - **(Nov. 11. 2023)** IPPO training code is now available.
-- _**(Nov. 12. 2023)** Standard evaluation code and self-play will be updated._
+- **(Nov. 12. 2023)** Standard evaluation code is now available.
 
 ## Contact
 **(TA)** Kanghoon Lee - leehoon@kaist.ac.kr

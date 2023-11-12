@@ -52,12 +52,20 @@ class MAgentBattle():
             self.visualizer.reset(self.env.get_pos(self.handles[0]), self.env.get_pos(self.handles[1]),
                                   ids=[obs1[1], obs2[1]])
 
-        if self.obs_flat:
+        if self.obs_flat and not self.eval_mode:
             alive_agent1 = len(obs1[1])
             obs1[0] = np.concatenate([obs1[0][0].reshape(alive_agent1, -1), obs1[0][1]], axis=-1)
 
             alive_agent2 = len(obs2[1])
             obs2[0] = np.concatenate([obs2[0][0].reshape(alive_agent2, -1), obs2[0][1]], axis=-1)
+
+        if self.eval_mode:
+            obs1 = {
+                agent_id: (obs1[0][0][i], obs1[0][1][i]) for i, agent_id in enumerate(obs1[1])
+            }
+            obs2 = {
+                agent_id - self.num_agent: (obs2[0][0][i], obs2[0][1][i]) for i, agent_id in enumerate(obs2[1])
+            }
 
         done1, done2 = np.zeros(self.num_agent), np.zeros(self.num_agent)
         self.done_before = (done1, done2)
@@ -79,7 +87,8 @@ class MAgentBattle():
 
         # 3. clear dead agent & render (official rendering)
         self.env.clear_dead()
-        self.env.render()
+        if self.visualize:
+            self.env.render()
 
         # 4. get observation
         obs1_ = [np.zeros((5, 11, 11, 7), dtype=np.float32), np.zeros((5, 34), dtype=np.float32)]
@@ -102,7 +111,7 @@ class MAgentBattle():
             self.visualizer.step(self.env.get_pos(self.handles[0]), self.env.get_pos(self.handles[1]),
                                  hp1=hp1, hp2=hp2, act1=action1, act2=action2, ids=[obs1[1], obs2[1]])
 
-        if self.obs_flat:
+        if self.obs_flat and not self.eval_mode:
             obs1[0] = np.concatenate([obs1[0][0].reshape(self.num_agent, -1), obs1[0][1]], axis=-1)
             obs2[0] = np.concatenate([obs2[0][0].reshape(self.num_agent, -1), obs2[0][1]], axis=-1)
 
@@ -120,6 +129,14 @@ class MAgentBattle():
             done1 = np.ones(self.num_agent)
             done2 = np.ones(self.num_agent)
 
+        if self.eval_mode:
+            obs1 = {
+                agent_id: (obs1[0][0][i], obs1[0][1][i]) for i, agent_id in enumerate(obs1[1])
+            }
+            obs2 = {
+                agent_id - self.num_agent: (obs2[0][0][i], obs2[0][1][i]) for i, agent_id in enumerate(obs2[1])
+            }
+
         return (obs1, obs2), (reward1, reward2), (done1, done2, env_done), (valid1, valid2)
 
     def close(self):
@@ -132,7 +149,7 @@ class MAgentBattle():
 
 if __name__ == "__main__":
 
-    env = MAgentBattle(visualize=True, eval_mode=False)
+    env = MAgentBattle(visualize=False, eval_mode=False)
     (obs1, obs2), (done1, done2, done_env), (valid1, valid2) = env.reset()
 
     while not done_env:
